@@ -15,7 +15,50 @@
             padding: 0;
             overflow-x: hidden;
         }
+        /* --- PASSWORD SCREEN CSS --- */
+        #login-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            }
 
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            padding: 12px;
+            font-size: 1.5rem;
+            text-align: center;
+            width: 120px;
+            border: 2px solid #d81b60;
+            border-radius: 8px;
+            margin-top: 15px;
+            letter-spacing: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button.unlock-btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        button.unlock-btn:active {
+            transform: scale(0.95);
+        }
         #gift-screen {
             height: 100vh;
             display: flex;
@@ -111,9 +154,36 @@
             margin: 0;
             padding: 0 5px;
         }
+        .heart {
+            position: fixed;
+            top: -10vh;
+            font-size: 1.5rem;
+            z-index: 9999;
+            animation: fall linear forwards;
+            pointer-events: none; 
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- SCREEN 0: Password Screen -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2 style="color: #d81b60; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-top: 0;">Unlock Gift 🔐</h2>
+            <p style="color: #555; margin-bottom: 5px;"><strong>Hint:</strong> Combine your birthday dates</p>
+            <p style="color: #d81b60; font-size: 1rem; font-weight: bold; margin-top: 0; margin-bottom: 20px;">(Note: Radha Krishna ✨)</p>
+            
+            <input type="number" id="password-input" placeholder="****">
+            <br>
+            <button class="unlock-btn" onclick="checkPassword()">Open</button>
+            <p id="error-msg" style="color: red; display: none; margin-top: 15px; font-weight: 600;">Galat password! Phir se try karo 🙈</p>
+        </div>
+    </div>
 
     <!-- SCREEN 1: Gift Box -->
     <div id="gift-screen">
