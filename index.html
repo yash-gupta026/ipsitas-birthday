@@ -189,7 +189,34 @@
     <!-- GAANA YAHAN ADD HUA HAI -->
     <audio id="bday-song" src="song.mp3" loop></audio>
 
-    <script>
+   <script>
+        // Password Check karne ka function
+        function checkPassword() {
+            var pass = document.getElementById("password-input").value;
+            // Ab sirf 0326 hi chalega!
+            if(pass === "0326") {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("gift-screen").style.display = "flex";
+                document.getElementById("error-msg").style.display = "none";
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+
+        // Heart banne ka function
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
         function openGift() {
             document.getElementById('gift-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
@@ -198,6 +225,8 @@
             song.play().catch(function(error) {
                 console.log("Browser autoplay blocked.");
             });
+
+            setInterval(createHeart, 300);
         }
     </script>
 
